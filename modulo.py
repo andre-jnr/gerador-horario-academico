@@ -96,8 +96,7 @@ def criarHorarios(materias, turmas):
 
                     else:
                         controle_de_loop += 1
-                        if controle_de_loop > 25:
-                            print('Erro, tente novamente!')
+                        if controle_de_loop > 25:  # Evitar loop infinito
                             break
 
                 elif len(horario.values()) == 5:
@@ -148,3 +147,13 @@ def tabulacaoHorarios(horario_das_turmas, materias):
             else:
                 print(f'{materia:^{tabulacao}}', end='|')
         print('\n')
+
+
+def validadarHorario(horario_das_turmas):
+    validacao = True
+    for horario in horario_das_turmas.values():
+        quant_materias = len(horario.values())
+        if (quant_materias < 5):
+            validacao = False
+            return validacao
+    return validacao
