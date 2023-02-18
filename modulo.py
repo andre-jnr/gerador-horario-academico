@@ -116,6 +116,7 @@ def criarHorarios(materias, turmas):
     return horario_das_turmas
 
 
+# Função antiga para criar a tabela dos horarios, deixei ela caso rich der falha.
 def tabulacaoHorarios(horario_das_turmas, materias):
     tamanhos = []
     for materia in materias:
@@ -147,6 +148,25 @@ def tabulacaoHorarios(horario_das_turmas, materias):
             else:
                 print(f'{materia:^{tabulacao}}', end='|')
         print('\n')
+
+
+def CriarTabelas(horario_das_turmas):
+    from rich.table import Table
+    from rich.console import Console
+
+    console = Console()
+
+    for turma, horario in horario_das_turmas.items():
+        tabela = Table(title=turma)
+        tabela.add_column('DIA')
+
+        for dia in horario.keys():
+            tabela.add_column(dia)
+
+        tabela.add_row('DISCIPLINA', horario['segunda'], horario['terça'], horario['quarta'],
+                       horario['quinta'], horario['sexta'])
+
+        console.print(tabela)
 
 
 def validadarHorario(horario_das_turmas):

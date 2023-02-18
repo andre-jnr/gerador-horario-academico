@@ -26,4 +26,4 @@ while validacao == False:
     horario_das_turmas = md.criarHorarios(materias, turmas)
     validacao = md.validadarHorario(horario_das_turmas)
 
-md.tabulacaoHorarios(horario_das_turmas, materias)
+md.CriarTabelas(horario_das_turmas)
